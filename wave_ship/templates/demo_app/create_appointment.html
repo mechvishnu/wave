@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+  </head>
+  <body>
+    <div class ='container' >
+      <h3> CREATE YOUR APPOINTMENT </h3>
+    <div class="jumbotron">
+      <form method="POST" action=".">
+        {% csrf_token %}
+          <table border="0">
+              {{appointform.as_p}}
+          </table>
+          <input type="submit" value="Register" />
+      </div>
+    </div>
+  </body>
+</html>

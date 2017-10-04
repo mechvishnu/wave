@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <style>
+table#t01 tr:nth-child(even) {
+    background-color: #eee;
+}
+table#t01 tr:nth-child(odd) {
+   background-color:#fff;
+}
+table#t01 th {
+    background-color: black;
+    color: white;
+}
+</style>
+</head>
+<body>
+
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">WAVE SHIP</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li class="active"><a href="{% url "demo_app:index" %}">Home</a></li>
+      <li><a href="{% url "demo_app:create_appointment" %}">Create appointment</a></li>
+      <li><a href="{% url "demo_app:other_name" %}">others</a></li>
+    </ul>
+    <form class="navbar-form navbar-left">
+      <div class="input-group">
+        <input type="text" class="form-control" placeholder="Search">
+        <div class="input-group-btn">
+          <button class="btn btn-default" type="submit">
+            <i class="glyphicon glyphicon-search"></i>
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+</nav>
+
+
+<div class="container" >
+  <h3> APPOINTMENTS </h3>
+  {% if appointments %}
+     <table id=t01 class="table" border=1>
+     <thead>
+       <th>username</th>
+       <th>principal</th>
+       <th>port</th>
+       <th>last_port</th>
+       <th>next_port</th>
+       <th>vessel_name</th>
+       <th>appointment_type</th>
+       <th>master_name</th>
+       <th>voyage_no</th>
+       <th>imo</th>
+       <th>nominator</th>
+       <th>charterer</th>
+       <th>call_purpose</th>
+     </thead>
+       {% for acc in appointments %}
+               <td>{{ acc.my_name}}</td>
+               <td>{{ acc.principal}}</td>
+               <td>{{ acc.port }}</td>
+               <td>{{ acc.last_port }}</td>
+               <td>{{ acc.next_port }}</td>
+               <td>{{ acc.vessel_name }}</td>
+               <td>{{ acc.appointment_type}}</td>
+               <td>{{ acc.master_name}}</td>
+               <td>{{ acc.voyage_no}}</td>
+               <td>{{ acc.imo }}</td>
+               <td>{{ acc.nominator }}</td>
+               <td>{{ acc.charterer }}</td>
+               <td>{{ acc.call_purpose}}</td>
+             </tr>
+
+           {% endfor %}
+       </table>
+
+     {% else %}
+       <p>No Access Records. Table Not Created.</p>
+     {% endif %}
+   </div>
+
+
+
+
+
+
+  </body>
+</html>

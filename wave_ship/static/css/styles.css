@@ -1,0 +1,8 @@
+{% load staticfiles %}
+body, html {
+    height: 100%;
+    margin: 0;
+}
+
+.bg {
+    color:red}
